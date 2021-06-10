@@ -28,7 +28,6 @@ spec:
       securityContext: {{ tpl (toYaml .) $ | nindent 8 }}
       {{- end }}
       affinity:
-      {{- end }}
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
@@ -38,7 +37,6 @@ spec:
                 values:
                 - kyverno
             topologyKey: {{ .Values.antiAffinityTopologyKey }}
-      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector: {{ tpl (toYaml .) $ | nindent 8 }}
       {{- end }}
